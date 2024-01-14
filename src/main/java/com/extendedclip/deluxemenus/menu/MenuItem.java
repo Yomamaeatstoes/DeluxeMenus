@@ -76,10 +76,10 @@ public class MenuItem {
 
         final String finalMaterial = lowercaseStringMaterial;
         final ItemHook pluginHook = DeluxeMenus.getInstance().getItemHooks().values()
-            .stream()
-            .filter(x -> finalMaterial.startsWith(x.getPrefix()))
-            .findFirst()
-            .orElse(null);
+                .stream()
+                .filter(x -> finalMaterial.startsWith(x.getPrefix()))
+                .findFirst()
+                .orElse(null);
 
         if (pluginHook != null) {
             itemStack = pluginHook.getItem(stringMaterial.substring(pluginHook.getPrefix().length()));

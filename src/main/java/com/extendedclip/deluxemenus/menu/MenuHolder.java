@@ -36,7 +36,7 @@ public class MenuHolder implements InventoryHolder {
   }
 
   public MenuHolder(Player viewer, String menuName,
-      Set<MenuItem> activeItems, Inventory inventory) {
+                    Set<MenuItem> activeItems, Inventory inventory) {
     this.viewer = viewer;
     this.menuName = menuName;
     this.activeItems = activeItems;
@@ -242,15 +242,15 @@ public class MenuHolder implements InventoryHolder {
 
             if (item.options().dynamicAmount().isPresent()) {
               try {
-               amt = Integer.parseInt(setPlaceholders(item.options().dynamicAmount().get()));
+                amt = Integer.parseInt(setPlaceholders(item.options().dynamicAmount().get()));
                 if (amt <= 0) {
                   amt = 1;
                 }
               } catch (Exception exception) {
                 DeluxeMenus.printStacktrace(
-                    "Something went wrong while updating item in slot " + item.options().slot() +
-                        ". Invalid dynamic amount: " + setPlaceholders(item.options().dynamicAmount().get()),
-                    exception
+                        "Something went wrong while updating item in slot " + item.options().slot() +
+                                ". Invalid dynamic amount: " + setPlaceholders(item.options().dynamicAmount().get()),
+                        exception
                 );
               }
             }
@@ -267,7 +267,7 @@ public class MenuHolder implements InventoryHolder {
 
               for (String line : item.options().lore()) {
                 updated.add(StringUtils
-                    .color(setPlaceholders(line)));
+                        .color(setPlaceholders(line)));
               }
               meta.setLore(updated);
             }
@@ -279,7 +279,7 @@ public class MenuHolder implements InventoryHolder {
       }
 
     }.runTaskTimerAsynchronously(DeluxeMenus.getInstance(), 20L,
-        20L * Menu.getMenu(menuName).getUpdateInterval());
+            20L * Menu.getMenu(menuName).getUpdateInterval());
   }
 
   public boolean isUpdating() {

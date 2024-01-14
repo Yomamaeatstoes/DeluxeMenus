@@ -60,20 +60,20 @@ public class DeluxeMenus extends JavaPlugin {
     instance = this;
 
     this.persistentMetaHandler = new PersistentMetaHandler();
-    
+
     if (NbtProvider.isAvailable()) {
       DeluxeMenus.debug(
-          DebugLevel.HIGHEST,
-          Level.INFO,
-          "NMS hook has been setup successfully!"
+              DebugLevel.HIGHEST,
+              Level.INFO,
+              "NMS hook has been setup successfully!"
       );
       return;
     }
 
     debug(
-        DebugLevel.HIGHEST,
-        Level.WARNING,
-        "Could not setup a NMS hook for your server version!"
+            DebugLevel.HIGHEST,
+            Level.WARNING,
+            "Could not setup a NMS hook for your server version!"
     );
   }
 
@@ -82,18 +82,18 @@ public class DeluxeMenus extends JavaPlugin {
   public void onEnable() {
     if (!hookPlaceholderAPI()) {
       debug(
-          DebugLevel.HIGHEST,
-          Level.SEVERE,
-          "Could not hook into PlaceholderAPI!",
-          "DeluxeMenus will now disable!"
+              DebugLevel.HIGHEST,
+              Level.SEVERE,
+              "Could not hook into PlaceholderAPI!",
+              "DeluxeMenus will now disable!"
       );
       Bukkit.getPluginManager().disablePlugin(this);
       return;
     } else {
       debug(
-          DebugLevel.HIGHEST,
-          Level.INFO,
-          "Successfully hooked into PlaceholderAPI!"
+              DebugLevel.HIGHEST,
+              Level.INFO,
+              "Successfully hooked into PlaceholderAPI!"
       );
     }
 
@@ -109,9 +109,9 @@ public class DeluxeMenus extends JavaPlugin {
 
       if (vaultHook.hooked()) {
         debug(
-            DebugLevel.HIGHEST,
-            Level.INFO,
-            "Successfully hooked into Vault!"
+                DebugLevel.HIGHEST,
+                Level.INFO,
+                "Successfully hooked into Vault!"
         );
       }
     }
@@ -127,15 +127,15 @@ public class DeluxeMenus extends JavaPlugin {
       debugLevel(menuConfig.debugLevel());
       checkUpdates = getConfig().getBoolean("check_updates");
       debug(
-          DebugLevel.HIGHEST,
-          Level.INFO,
-          menuConfig.loadGUIMenus() + " GUI menus loaded!"
+              DebugLevel.HIGHEST,
+              Level.INFO,
+              menuConfig.loadGUIMenus() + " GUI menus loaded!"
       );
     } else {
       debug(
-          DebugLevel.HIGHEST,
-          Level.WARNING,
-          "Failed to load from config.yml. Use /dm reload after fixing your errors."
+              DebugLevel.HIGHEST,
+              Level.WARNING,
+              "Failed to load from config.yml. Use /dm reload after fixing your errors."
       );
     }
 
@@ -148,16 +148,16 @@ public class DeluxeMenus extends JavaPlugin {
 
       if (updateChecker.updateAvailable()) {
         debug(
-            DebugLevel.HIGHEST,
-            Level.INFO,
-            "An update for DeluxeMenus (DeluxeMenus v" + updateChecker.getLatestVersion() + ")",
-            "is available at https://www.spigotmc.org/resources/deluxemenus.11734/"
+                DebugLevel.HIGHEST,
+                Level.INFO,
+                "An update for DeluxeMenus (DeluxeMenus v" + updateChecker.getLatestVersion() + ")",
+                "is available at https://www.spigotmc.org/resources/deluxemenus.11734/"
         );
       } else {
         debug(
-            DebugLevel.HIGHEST,
-            Level.INFO,
-            "You are running the latest version of DeluxeMenus!"
+                DebugLevel.HIGHEST,
+                Level.INFO,
+                "You are running the latest version of DeluxeMenus!"
         );
       }
     }
@@ -265,14 +265,14 @@ public class DeluxeMenus extends JavaPlugin {
       out.writeUTF(server);
     } catch (Exception e) {
       debug(
-          DebugLevel.HIGHEST,
-          Level.SEVERE,
-          "There was a problem attempting to send " + p.getName() + " to server " + server + "!"
+              DebugLevel.HIGHEST,
+              Level.SEVERE,
+              "There was a problem attempting to send " + p.getName() + " to server " + server + "!"
       );
 
       printStacktrace(
-          "There was a problem attempting to send " + p.getName() + " to server " + server + "!",
-          e
+              "There was a problem attempting to send " + p.getName() + " to server " + server + "!",
+              e
       );
     }
 
@@ -280,7 +280,7 @@ public class DeluxeMenus extends JavaPlugin {
   }
 
   public void sms(CommandSender s, Component msg) {
-      adventure().sender(s).sendMessage(msg);
+    adventure().sender(s).sendMessage(msg);
   }
 
   public void sms(CommandSender s, Messages msg) {
@@ -291,8 +291,8 @@ public class DeluxeMenus extends JavaPlugin {
     if (debugLevel().getPriority() > debugLevel.getPriority()) return;
 
     getInstance().getLogger().log(
-        level,
-        String.join(System.lineSeparator(), messages)
+            level,
+            String.join(System.lineSeparator(), messages)
     );
   }
 

@@ -28,10 +28,10 @@ public class ClickActionTask extends BukkitRunnable {
   private final String exec;
 
   public ClickActionTask(
-      @NotNull final DeluxeMenus plugin,
-      @NotNull final String name,
-      @NotNull final ActionType actionType,
-      @NotNull final String exec
+          @NotNull final DeluxeMenus plugin,
+          @NotNull final String name,
+          @NotNull final ActionType actionType,
+          @NotNull final String exec
   ) {
     this.plugin = plugin;
     this.name = name;
@@ -138,9 +138,9 @@ public class ClickActionTask extends BukkitRunnable {
       case REFRESH:
         if (holder == null) {
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              player.getName() + " does not have menu open! Nothing to refresh!"
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  player.getName() + " does not have menu open! Nothing to refresh!"
           );
           break;
         }
@@ -158,9 +158,9 @@ public class ClickActionTask extends BukkitRunnable {
           DeluxeMenus.getInstance().getVault().takeMoney(player, Double.parseDouble(executable));
         } catch (final NumberFormatException exception) {
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              "Amount for take money action: " + executable + ", is not a valid number!"
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  "Amount for take money action: " + executable + ", is not a valid number!"
           );
         }
         break;
@@ -175,9 +175,9 @@ public class ClickActionTask extends BukkitRunnable {
           DeluxeMenus.getInstance().getVault().giveMoney(player, Double.parseDouble(executable));
         } catch (final NumberFormatException exception) {
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              "Amount for give money action: " + executable + ", is not a valid number!"
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  "Amount for give money action: " + executable + ", is not a valid number!"
           );
         }
         break;
@@ -190,8 +190,8 @@ public class ClickActionTask extends BukkitRunnable {
           if (Integer.parseInt(lowerCaseExecutable.replaceAll("l", "")) <= 0) break;
 
           if (actionType == ActionType.TAKE_EXP) {
-              ExpUtils.setExp(player, "-" + lowerCaseExecutable);
-              break;
+            ExpUtils.setExp(player, "-" + lowerCaseExecutable);
+            break;
           }
 
           ExpUtils.setExp(player, lowerCaseExecutable);
@@ -200,17 +200,17 @@ public class ClickActionTask extends BukkitRunnable {
         } catch (final NumberFormatException exception) {
           if (actionType == ActionType.TAKE_EXP) {
             DeluxeMenus.debug(
-                DebugLevel.HIGHEST,
-                Level.WARNING,
-                "Amount for take exp action: " + executable + ", is not a valid number!"
+                    DebugLevel.HIGHEST,
+                    Level.WARNING,
+                    "Amount for take exp action: " + executable + ", is not a valid number!"
             );
             break;
           }
 
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              "Amount for give exp action: " + executable + ", is not a valid number!"
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  "Amount for give exp action: " + executable + ", is not a valid number!"
           );
           break;
         }
@@ -218,9 +218,9 @@ public class ClickActionTask extends BukkitRunnable {
       case GIVE_PERM:
         if (DeluxeMenus.getInstance().getVault() == null || !DeluxeMenus.getInstance().getVault().hooked()) {
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              "Vault not hooked! Cannot give permission: " + executable + "!");
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  "Vault not hooked! Cannot give permission: " + executable + "!");
           break;
         }
 
@@ -230,9 +230,9 @@ public class ClickActionTask extends BukkitRunnable {
       case TAKE_PERM:
         if (DeluxeMenus.getInstance().getVault() == null || !DeluxeMenus.getInstance().getVault().hooked()) {
           DeluxeMenus.debug(
-              DebugLevel.HIGHEST,
-              Level.WARNING,
-              "Vault not hooked! Cannot take permission: " + executable + "!");
+                  DebugLevel.HIGHEST,
+                  Level.WARNING,
+                  "Vault not hooked! Cannot take permission: " + executable + "!");
           break;
         }
 
@@ -251,8 +251,8 @@ public class ClickActionTask extends BukkitRunnable {
             sound = Sound.valueOf(executable.toUpperCase());
           } catch (final IllegalArgumentException exception) {
             DeluxeMenus.printStacktrace(
-                "Sound name given for sound action: " + executable + ", is not a valid sound!",
-                exception
+                    "Sound name given for sound action: " + executable + ", is not a valid sound!",
+                    exception
             );
             break;
           }
@@ -263,8 +263,8 @@ public class ClickActionTask extends BukkitRunnable {
             sound = Sound.valueOf(parts[0].toUpperCase());
           } catch (final IllegalArgumentException exception) {
             DeluxeMenus.printStacktrace(
-                "Sound name given for sound action: " + parts[0] + ", is not a valid sound!",
-                exception
+                    "Sound name given for sound action: " + parts[0] + ", is not a valid sound!",
+                    exception
             );
             break;
           }
@@ -274,14 +274,14 @@ public class ClickActionTask extends BukkitRunnable {
               pitch = Float.parseFloat(parts[2]);
             } catch (final NumberFormatException exception) {
               DeluxeMenus.debug(
-                  DebugLevel.HIGHEST,
-                  Level.WARNING,
-                  "Pitch given for sound action: " + parts[2] + ", is not a valid number!"
+                      DebugLevel.HIGHEST,
+                      Level.WARNING,
+                      "Pitch given for sound action: " + parts[2] + ", is not a valid number!"
               );
 
               DeluxeMenus.printStacktrace(
-                  "Pitch given for sound action: " + parts[2] + ", is not a valid number!",
-                  exception
+                      "Pitch given for sound action: " + parts[2] + ", is not a valid number!",
+                      exception
               );
             }
           }
@@ -291,14 +291,14 @@ public class ClickActionTask extends BukkitRunnable {
             volume = Float.parseFloat(parts[1]);
           } catch (final NumberFormatException exception) {
             DeluxeMenus.debug(
-                DebugLevel.HIGHEST,
-                Level.WARNING,
-                "Volume given for sound action: " + parts[1] + ", is not a valid number!"
+                    DebugLevel.HIGHEST,
+                    Level.WARNING,
+                    "Volume given for sound action: " + parts[1] + ", is not a valid number!"
             );
 
             DeluxeMenus.printStacktrace(
-                "Volume given for sound action: " + parts[1] + ", is not a valid number!",
-                exception
+                    "Volume given for sound action: " + parts[1] + ", is not a valid number!",
+                    exception
             );
           }
         }

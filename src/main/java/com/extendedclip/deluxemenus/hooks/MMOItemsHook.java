@@ -42,7 +42,7 @@ public class MMOItemsHook implements ItemHook, SimpleCache {
 
         ItemStack mmoItem = null;
         try {
-            mmoItem = Bukkit.getScheduler().callSyncMethod(DeluxeMenus.getInstance(), () -> {
+            mmoItem = Bukkit.getScheduler().runTaskAsynchronously();AsyncMethod(DeluxeMenus.getInstance(), () -> {
                 ItemStack item = MMOItems.plugin.getItem(itemType, splitArgs[1]);
 
                 if (item == null) {
@@ -58,6 +58,9 @@ public class MMOItemsHook implements ItemHook, SimpleCache {
         }
 
         return mmoItem == null ? new ItemStack(Material.STONE, 1) : mmoItem;
+    }
+
+    private Map<Object, Object> AsyncMethod(DeluxeMenus instance, Object o) {
     }
 
     @Override
